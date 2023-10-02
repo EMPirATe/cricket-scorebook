@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {},
-          style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.purple)),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
           child: const Text('Start Quiz'),
         )
       ],

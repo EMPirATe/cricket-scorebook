@@ -7,7 +7,14 @@ class HomeContainer extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
-        decoration: const BoxDecoration(color: Colors.purple),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.deepPurple,
+              Colors.deepPurple,
+            ],
+          ),
+        ),
         child: const Center(
           child: HomePage(),
         ));

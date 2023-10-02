@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -11,6 +13,7 @@ class HomePage extends StatelessWidget {
         Image.asset(
           'assets/images/quiz-logo.png',
           width: 250,
+          color: const Color.fromARGB(150, 255, 255, 255),
         ),
         const SizedBox(
           height: 40,
@@ -25,10 +28,11 @@ class HomePage extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        ElevatedButton(
-          onPressed: () {},
+        ElevatedButton.icon(
+          onPressed: startQuiz,
           style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-          child: const Text('Start Quiz'),
+          icon: const Icon(Icons.arrow_right_alt),
+          label: const Text('Start Quiz'),
         )
       ],
     );

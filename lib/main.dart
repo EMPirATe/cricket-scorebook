@@ -1,12 +1,8 @@
-import 'package:cricket_scorebook/home_container.dart';
+import 'package:cricket_scorebook/quiz.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: Scaffold(
-        body: HomeContainer(),
-      ),
-    ),
+    const Quiz(),
   );
 }

@@ -2,7 +2,9 @@ import 'package:cricket_scorebook/home_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeContainer extends StatelessWidget {
-  const HomeContainer({super.key});
+  const HomeContainer(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -15,8 +17,8 @@ class HomeContainer extends StatelessWidget {
             ],
           ),
         ),
-        child: const Center(
-          child: HomePage(),
+        child: Center(
+          child: HomePage(startQuiz),
         ));
   }
 }

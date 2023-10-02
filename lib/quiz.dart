@@ -1,4 +1,4 @@
-import 'package:cricket_scorebook/home_container.dart';
+import 'package:cricket_scorebook/home_page.dart';
 import 'package:cricket_scorebook/questions_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class _QuizState extends State<Quiz> {
 
   @override
   void initState() {
-    activeScreen = HomeContainer(switchScreen);
+    activeScreen = HomePage(switchScreen);
     super.initState();
   }
 
@@ -30,7 +30,17 @@ class _QuizState extends State<Quiz> {
   Widget build(context) {
     return MaterialApp(
       home: Scaffold(
-        body: activeScreen,
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.deepPurple,
+                Colors.deepPurple,
+              ],
+            ),
+          ),
+          child: activeScreen,
+        ),
       ),
     );
   }

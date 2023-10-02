@@ -1,5 +1,7 @@
+import 'package:cricket_scorebook/data/questions.dart';
 import 'package:cricket_scorebook/home_page.dart';
 import 'package:cricket_scorebook/questions_page.dart';
+import 'package:cricket_scorebook/results_page.dart';
 import 'package:flutter/material.dart';
 
 class Quiz extends StatefulWidget {
@@ -13,6 +15,7 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   Widget? activeScreen;
+  List<String> selectedAnswers = [];
 
   @override
   void initState() {
@@ -22,8 +25,22 @@ class _QuizState extends State<Quiz> {
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsPage();
+      activeScreen = QuestionsPage(
+        onSelectAnswer: chooseAnswer,
+      );
     });
+  }
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+
+    if (questions.length == selectedAnswers.length) {
+      setState(() {
+        activeScreen = ResultsPage(choosenAnswers: selectedAnswers);
+      });
+
+      selectedAnswers = [];
+    }
   }
 
   @override

@@ -1,4 +1,3 @@
-import 'package:cricket_scorebook/styled_text.dart';
 import 'package:flutter/material.dart';
 
 var startAlignment = Alignment.bottomLeft;
@@ -9,14 +8,39 @@ class GradientContainer extends StatelessWidget {
 
   final List<Color> colors;
 
+  void rollDice() {}
+
   @override
   Widget build(context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: colors, begin: startAlignment, end: endAlignment),
+        gradient: LinearGradient(
+          colors: colors,
+          begin: startAlignment,
+          end: endAlignment,
+        ),
       ),
-      child: const Center(
-        child: StyledText('Hello ChiiChii!'),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              'assets/images/dice-6.png',
+              width: 250,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextButton(
+              onPressed: rollDice,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                textStyle: const TextStyle(fontSize: 28),
+              ),
+              child: const Text('Roll Dice!'),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:cricket_scorebook/answer_button.dart';
 import 'package:cricket_scorebook/data/questions.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsPage extends StatefulWidget {
   const QuestionsPage({super.key});
@@ -12,9 +13,17 @@ class QuestionsPage extends StatefulWidget {
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -26,14 +35,14 @@ class _QuestionsPageState extends State<QuestionsPage> {
           children: [
             Text(
               currentQuestion.text,
-              style: const TextStyle(color: Colors.white),
+              style: GoogleFonts.lato(color: const Color.fromARGB(255, 30, 25, 70), fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.answers.map((item) {
+            ...currentQuestion.getShuffledAnswers().map((item) {
               return AnswerButton(
                 answerText: item,
-                onTap: () {},
+                onTap: answerQuestion,
               );
             }),
           ],
